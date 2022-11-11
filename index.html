@@ -8,60 +8,31 @@
 
   <p><em>Calculator Application</em> 💁</p>
 
-  <div>
-    <input id="inputA" type="text">
-    <input id="inputB" type="text">
+  <div id="container">
+    <h3 id="display">Display</h3>
+    <!-- <input id="inputB" type="text"> -->
+  <div class="numButtons">
+    <button id="zero">0</button>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
     <button class="buttons" id="add">Add</button>
     <button class="buttons" id="subtract">Subtract</button>
     <button class="buttons" id="multiply">Multiply</button>
-    <button class="buttons" id="power">Exponent</button>
-    <h3 id="result">Results</h3>
+    <button class="buttons" id="divide">Divide</button>
+    <button class="buttons" id="clear">Clear</button>
+    <button class="buttons" id="operate">Equals</button>
+  </div>
+  <h3 id="result">Results</h3>
   </div>
 
-
-
-
-
-<script>
- document.querySelector("#add").addEventListener("click", add)
- document.querySelector("#subtract").addEventListener("click", subtract)
- document.querySelector("#multiply").addEventListener("click", multiply)
- document.querySelector("#power").addEventListener("click", exponent)
-
-function add(a, b) {
-  a = parseInt(document.querySelector('#inputA').value);
-  b = parseInt(document.querySelector('#inputB').value);
-  let addVar = a + b;
-  console.log(addVar)
-	document.querySelector("#result").innerText = addVar;
-};
-
-function subtract(a, b) {
-  a = parseInt(document.querySelector('#inputA').value);
-  b = parseInt(document.querySelector('#inputB').value);
-  let subVar = a - b;
-  console.log(subVar)
-	document.querySelector("#result").innerText = subVar;
-};
-
-
-function multiply(a, b) {
-  a = parseInt(document.querySelector('#inputA').value);
-  b = parseInt(document.querySelector('#inputB').value);
-  let multiVar = a * b;
-  console.log(multiVar)
-	document.querySelector("#result").innerText = multiVar;
-};
-
-function exponent(a, b) {
-  a = parseInt(document.querySelector('#inputA').value);
-  b = parseInt(document.querySelector('#inputB').value);
-  let expoVar = a ** b;
-  console.log(expoVar)
-	document.querySelector("#result").innerText = expoVar;
-};
-
-
-  </script>
+<script type="text/javascript" src="/index.js">
+</script>
 </body>
 </html>
