@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel=”stylesheet” href=”/main.css”>
   <title>Calculator</title>
 </head>
 <body>
@@ -12,6 +13,15 @@
   <input type="text" class="displayValue">
   <h4 id="display">
   Value
+  </h4>
+  <h4 id="firstDisplay">
+    First Operand
+  </h4>
+  <h4 id="secondDisplay">
+    Second Operand
+  </h4>
+  <h4 id="symbolDisplay">
+  Symbol
   </h4>
   <div id="button-group">
   <button class="numbers" id="0">0
@@ -34,6 +44,8 @@
   </button>
   <button class="numbers" id="9">9
   </button>
+  </div>
+  <div id="symbols-group">
   <button class="symbols" id="*">*
   </button>
   <button class="symbols" id="/">/
@@ -42,13 +54,11 @@
   </button>
   <button class="symbols" id="-">-
   </button>
-  <button class="symbols" id="=">=
+  <button class="symbols" id="equals">=
   </button>
-  </div>
-  
   <button class="symbols" id="ac">AC
   </button>
-
+  </div>
 <script type="text/javascript" src="/index.js">
 </script>
 </body>

@@ -1,17 +1,25 @@
 
 let firstOperand = 0
-let nextOperand = 0
+let secondOperand = 0
 let displayValue = 0
 let lastChar = ''
 let symbol = 0
+let symbolValue = 0
 
+//@@ Appending a digit to first operand is not working. Prob not working for second operand either
+
+//@@ needs to be refactored to use firstOperand values for calc and display instead of display value
+// Ive added the display nodes for firstOperand and secondOperand, which have an id of firstDisplay and secondDisplay
+
+//Append Operand method
+// Does logic for determining which value to update work?   !@!!!!!!!
 const buttonGroup = document.getElementById("button-group");
 
 const appendOperand = e => { 
   
   const isButton = e.target.nodeName === 'BUTTON';
   
-  if(symbol === 0){
+  if(symbol === 0 && firstOperand === 0 && secondOperand === 0){
   
   if(displayValue === 0)
   {
@@ -24,6 +32,8 @@ const appendOperand = e => {
 	console.log(displayValue)
   }
   }
+  //conditional to append to first operands current value if value has already been updated
+  // This isnt working. Using too many different variables. Display value needs to be changed to 2 different concurrent vals
   else if (displayValue != 0){
   displayValue = displayValue + e.target.id
   firstOperand = displayValue + e.target.id
@@ -31,33 +41,127 @@ const appendOperand = e => {
   }
   document.querySelector('#display').innerText = displayValue
   }
-  else if (symbol !== 0){
-  //WHAT WE DOIN HERE FOO
-  
+  else if (symbol !== 0 && firstOperand !== 0 && secondOperand === 0){
+  //Update Second operand and then run operate
+  if(secondOperand === 0)
+  {
+  if(!isButton){
+    return
+  }
+  else{
+  displayValue = e.target.id
+  secondOperand = e.target.id
+	console.log(displayValue)
+  }
+  }
+  //conditional to append to second operands current value if value has already been updated
+  else if (secondOperand != 0){
+  displayValue = displayValue + e.target.id
+  secondOperand = displayValue + e.target.id
+	console.log(displayValue)
+  }
+  document.querySelector('#display').innerText = displayValue
   operate(symbol, firstOperand, secondOperand)
   
   }
+
+  else if (symbol !== 0 && firstOperand !== 0 && secondOperand !== 0){
+    // Tell them to press equals
+    
+
+    
+    }
   }
-  
 buttonGroup.addEventListener("click", appendOperand);
 
+//Update Symbol  
+const symbolGroup = document.getElementById("symbols-group");
 
+const updateSymbol = e => { 
+  
+  const isButton = e.target.nodeName === 'BUTTON';
+
+  if(secondOperand === 0 && symbol === 0 && firstOperand !== 0){
+  //if first operand is present, but symbol and second operands are not present, update the symbol
+
+  if(!isButton){
+    return
+  }
+  else{
+  symbol = e.target.id
+  symbolValue = e.target.id
+  document.querySelector('#symbolDisplay').innerText = symbolValue
+	console.log("Symbol value updated to be " + symbolValue)
+  }}
+
+  else if (symbol !== 0 && secondOperand === 0){
+    //if symbol and first operand are present and second operand is blank, tell them to enter a value for second operand
+  alert("You already have a symbol selected for the operation with your first operand. Please enter a value for the second operand.")
+  }
+  else if (symbol !== 0 && secondOperand !== 0 && firstOperand !== 0){
+    //if symbol and first and second operands are present, tell them to press equals
+    alert("You already have a symbol selected for the operation with your first and second operand. Please press the equals button if you are ready to calculate.")
+    }
+  }
+  
+symbolGroup.addEventListener("click", updateSymbol);
+
+
+document.querySelector('#equals').addEventListener('click', operate(symbol, firstOperand, secondOperand))
+// non const approach
 function operate(sym, a, b){
 
-// Use conditional to determine if # of operators and operands are even
-/* if (n.length % 2 === 0){
-// display results
-} */
-/* else if (n.length % 2 !== 0){
-//parse off and store last character of string
-// Do calculation
-// Update Display value and firstOperanc
-// Show parsed off operator on screen
-} */
+  sym = symbol
+
+  a = firstOperand
+
+  b = secondOperand
+
+  if (sym == "+"){
+
+  displayValue = add(a,b)
+
+  document.querySelector('#display').innerText =  displayValue 
+  }
+  else if(sym == "-"){
+
+  displayValue =  subtract(a, b)
+
+  document.querySelector('#display').innerText =  displayValue 
+  }
+  else if( sym == "/"){
+
+  displayValue =  divide(a, b)
+
+  document.querySelector('#display').innerText =  displayValue 
+  }
+  else if( sym == "*"){
+
+  displayValue =  mutliply(a, b)
+
+  document.querySelector('#display').innerText =  displayValue 
+  }
+
 console.log("The end of the operate function has concluded");
-return console.log(n);
+return console.log(displayValue);
 
 }
+
+//Const approach
+
+// const equals = document.querySelector('#=')
+
+// const operate = e => {
+// displayValue = 0
+// firstOperand = 0
+// nextOperand = 0
+// lastChar = ''
+// symbol = 0
+// console.log("Clear has been called and display Value is " + displayValue)
+// let clearedVal = displayValue.toString();
+// document.querySelector('#display').innerText = clearedVal
+// }
+// equals.addEventListener("click", clear)
 
 const display = document.querySelector('#ac')
 
@@ -92,7 +196,7 @@ function divide(a, b) {
 
 
 
-operate(displayValue);
+// operate(displayValue);
 
 
 
@@ -187,130 +291,6 @@ operate(displayValue);
 
 
 
-
-
-
-
-
-
-//OLD CODE
-
-
-// document.querySelector("#add").addEventListener("click", add)
-// document.querySelector("#subtract").addEventListener("click", subtract)
-// document.querySelector("#multiply").addEventListener("click", multiply)
-// document.querySelector("#divide").addEventListener("click", divide)
-// document.querySelector("#clear").addEventListener("click", clear)
-// document.querySelector("#zero").addEventListener("click", zero)
-
-// let numberOne = 0
-// let numberTwo = 0
-// let sign = ""
-// let strOne = ""
-// let strTwo =""
-
-// function operate(operator, numOne, numTwo){
-//   //Set parameters
-//   numOne = numberOne
-//   numTwo = numberTwo
-//   operator = sign
-
-// //Conditional statement to determine which operation the user needs
-// // Function Executed depends on the operator parameter
-// if(operator === "+"){
-//   add(numOne,numTwo)
-// }
-// else if(operator === "-"){
-//   subtract(numOne,numTwo)
-// }
-// else if(operator === "*"){
-//   multiply(numOne,numTwo)
-// }
-// else if(operator === "/"){
-//   divide(numOne,numTwo)
-// }
-//  }
-
-// function add(a, b) {
-//   a = parseInt(document.querySelector('#inputA').value);
-//   b = parseInt(document.querySelector('#inputB').value);
-//   let addVar = a + b;
-//   console.log(addVar)
-// 	document.querySelector("#result").innerText = addVar;
-// };
-
-// function subtract(a, b) {
-//   a = parseInt(document.querySelector('#inputA').value);
-//   b = parseInt(document.querySelector('#inputB').value);
-//   let subVar = a - b;
-//   console.log(subVar)
-// 	document.querySelector("#result").innerText = subVar;
-// };
-
-
-// function multiply(a, b) {
-//   a = parseInt(document.querySelector('#inputA').value);
-//   b = parseInt(document.querySelector('#inputB').value);
-//   let multiVar = a * b;
-//   console.log(multiVar)
-// 	document.querySelector("#result").innerText = multiVar;
-// };
-
-// function divide(a, b) {
-//   a = parseInt(document.querySelector('#inputA').value);
-//   b = parseInt(document.querySelector('#inputB').value);
-//   let expoVar = a / b;
-//   console.log(diviVar)
-// 	document.querySelector("#result").innerText = diviVar;
-// };
-
-// function clear() {
-// 	document.querySelector("#result").innerText = "Results";
-
-//   //clear variables etc here
-
-//   numberOne = 0;
-//   numberTwo = 0;
-// };
-
-// function zero() {
-//   document.querySelector("#display").innerText = "0";
-
-//   if(numberOne === 0){
-//     numberOne = 0
-//     strOne ="0"
-//   }
-//   else if(numberOne !== 0){
-//     numberTwo = 0
-//     strTwo ="0"
-//   }
-// };
-
-// function one() {
-
-//   //Condition for if the first value === 0
-//   if(numberOne === 0){
-//     numberOne = 1
-//     strOne ="1"
-//     document.querySelector("#display").innerText = strOne;
-//   }
-//   //Condition for if the first value === 0 && the second value === 0
-//   else if(numberOne === 0 && numberTwo === 0){
-//     strTwo = "1"
-//     numberTwo = 1
-//     document.querySelector("#display").innerText = strTwo;
-  
-//   }
-//   //Condition for if the first value 1== 0
-//   else if(numberOne !== 0){
-//     strTwo.concat("1");
-//     numberTwo = parseInt(strTwo);
-//     document.querySelector("#display").innerText = strTwo;
-  
-//   }
-
-
-// };
 
 
 
