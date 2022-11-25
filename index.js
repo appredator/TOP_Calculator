@@ -19,9 +19,9 @@ const appendOperand = e => {
   
   const isButton = e.target.nodeName === 'BUTTON';
   
-  if(symbol === 0 && firstOperand === 0 && secondOperand === 0){
+  if(firstOperand === 0 && secondOperand === 0 && symbol === 0){
   
-  if(displayValue === 0)
+  if(firstOperand === 0)
   {
   if(!isButton){
     return
@@ -29,20 +29,42 @@ const appendOperand = e => {
   else{
   displayValue = e.target.id
   firstOperand = e.target.id
-	console.log(displayValue)
+	console.log("First and Second Operands and symbol were not set. So, first operand has been changed from 0 and set to " + firstOperand)
   }
   }
   //conditional to append to first operands current value if value has already been updated
   // This isnt working. Using too many different variables. Display value needs to be changed to 2 different concurrent vals
-  else if (displayValue != 0){
+  else if (firstOperand != 0){
   displayValue = displayValue + e.target.id
-  firstOperand = displayValue + e.target.id
-	console.log(displayValue)
+  firstOperand = firstOperand + e.target.id
+	console.log("First operand has been appended because it was not 0. Symbol has not been set. First Operand value is " + firstOperand)
   }
-  document.querySelector('#display').innerText = displayValue
+  document.querySelector('#firstDisplay').innerText = firstOperand
   }
-  else if (symbol !== 0 && firstOperand !== 0 && secondOperand === 0){
-  //Update Second operand and then run operate
+  else if (firstOperand !== 0 && secondOperand === 0 && symbol === 0){
+  //Append to firstOperand
+    if(firstOperand === 0)
+  {
+  if(!isButton){
+    return
+  }
+  else{
+  displayValue = firstOperand + e.target.id
+  firstOperand = firstOperand + e.target.id
+	console.log("First Operand was set and symbol was not. So, first operand has had the value appended. Now set to " + firstOperand)
+  }
+  }
+  //conditional to append to first operands current value if value has already been updated
+  else if (firstOperand != 0){
+  displayValue = displayValue + e.target.id
+  firstOperand = firstOperand + e.target.id
+	console.log("First operand has been appended because it was not 0. Symbol has not been set. First Operand value is " + firstOperand)
+  }
+  document.querySelector('#firstDisplay').innerText = firstOperand
+  }
+  //Split to next condition
+  else if (firstOperand !== 0 && secondOperand === 0 && symbol !== 0){
+  //Update Second operand 
   if(secondOperand === 0)
   {
   if(!isButton){
@@ -51,25 +73,38 @@ const appendOperand = e => {
   else{
   displayValue = e.target.id
   secondOperand = e.target.id
-	console.log(displayValue)
+	console.log("First Operand and symbol were already set. So, second operand has been changed from 0 and set to " + secondOperand)
   }
   }
   //conditional to append to second operands current value if value has already been updated
   else if (secondOperand != 0){
   displayValue = displayValue + e.target.id
-  secondOperand = displayValue + e.target.id
-	console.log(displayValue)
+  secondOperand = secondOperand + e.target.id
+  console.log("First and Second Operand and the symbol were already set. So, second operand has had the value appended and set to " + secondOperand)
   }
-  document.querySelector('#display').innerText = displayValue
-  operate(symbol, firstOperand, secondOperand)
-  
+  document.querySelector('#secondDisplay').innerText = secondOperand
   }
-
-  else if (symbol !== 0 && firstOperand !== 0 && secondOperand !== 0){
-    // Tell them to press equals
-    
-
-    
+  //Split to next condition
+  else if (firstOperand !== 0 && secondOperand !== 0 && symbol !== 0){
+    //Update Second operand 
+    if(secondOperand === 0)
+    {
+    if(!isButton){
+      return
+    }
+    else{
+    displayValue = e.target.id
+    secondOperand = e.target.id
+    console.log("First Operand and symbol were already set. So, second operand has been changed from 0 and set to " + secondOperand)
+    }
+    }
+    //conditional to append to second operands current value if value has already been updated
+    else if (secondOperand != 0){
+    displayValue = displayValue + e.target.id
+    secondOperand = secondOperand + e.target.id
+    console.log("First and Second Operand and the symbol were already set. So, second operand has had the value appended and set to " + secondOperand)
+    }
+    document.querySelector('#secondDisplay').innerText = secondOperand
     }
   }
 buttonGroup.addEventListener("click", appendOperand);
@@ -81,9 +116,8 @@ const updateSymbol = e => {
   
   const isButton = e.target.nodeName === 'BUTTON';
 
-  if(secondOperand === 0 && symbol === 0 && firstOperand !== 0){
+  if(firstOperand !== 0 && secondOperand === 0 && symbol === 0){
   //if first operand is present, but symbol and second operands are not present, update the symbol
-
   if(!isButton){
     return
   }
@@ -92,22 +126,21 @@ const updateSymbol = e => {
   symbolValue = e.target.id
   document.querySelector('#symbolDisplay').innerText = symbolValue
 	console.log("Symbol value updated to be " + symbolValue)
-  }}
-
-  else if (symbol !== 0 && secondOperand === 0){
+  }
+  }
+  else if (firstOperand != 0 && secondOperand === 0 && symbol !== 0){
     //if symbol and first operand are present and second operand is blank, tell them to enter a value for second operand
   alert("You already have a symbol selected for the operation with your first operand. Please enter a value for the second operand.")
   }
-  else if (symbol !== 0 && secondOperand !== 0 && firstOperand !== 0){
+  else if (firstOperand != 0 && secondOperand !== 0 && symbol !== 0){
     //if symbol and first and second operands are present, tell them to press equals
     alert("You already have a symbol selected for the operation with your first and second operand. Please press the equals button if you are ready to calculate.")
     }
   }
-  
 symbolGroup.addEventListener("click", updateSymbol);
 
-
-document.querySelector('#equals').addEventListener('click', operate(symbol, firstOperand, secondOperand))
+//Call when equals button is pressed.
+document.querySelector('#equals').addEventListener('click', operate())
 // non const approach
 function operate(sym, a, b){
 
@@ -171,9 +204,11 @@ firstOperand = 0
 nextOperand = 0
 lastChar = ''
 symbol = 0
-console.log("Clear has been called and display Value is " + displayValue)
+// console.log("Clear has been called and display Value is " + displayValue)
 let clearedVal = displayValue.toString();
-document.querySelector('#display').innerText = clearedVal
+document.querySelector('#firstDisplay').innerText = 0
+document.querySelector('#secondDisplay').innerText = 0
+document.querySelector('#symbolDisplay').innerText = 0
 }
 display.addEventListener("click", clear)
 
@@ -194,9 +229,6 @@ function divide(a, b) {
 	return a / b;
 };
 
-
-
-// operate(displayValue);
 
 
 
