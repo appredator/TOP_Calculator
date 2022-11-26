@@ -152,14 +152,17 @@ let clearedVal = displayValue.toString();
 document.querySelector('#firstDisplay').innerText = 0
 document.querySelector('#secondDisplay').innerText = 0
 document.querySelector('#symbolDisplay').innerText = 0
+document.querySelector('#display').innerText = 0
 }
 display.addEventListener("click", clear)
 
 //Call when equals button is pressed.
-document.querySelector('#equals').addEventListener('click', operate())
+const equals = document.getElementById("equals")
+// make this do event listener changes display first
+// document.querySelector('#equals').addEventListener('click', operate())
 // non const approach
-function operate(sym, a, b){
-
+const operate = sym => {
+console.log("Operate has been called.")
   sym = symbol
 
   a = firstOperand
@@ -171,46 +174,40 @@ function operate(sym, a, b){
   displayValue = add(a,b)
 
   document.querySelector('#display').innerText =  displayValue 
+
+  console.log("Add function has been called from operate");
   }
   else if(sym == "-"){
 
   displayValue =  subtract(a, b)
 
   document.querySelector('#display').innerText =  displayValue 
+
+  console.log("Subtraction function has been called from operate");
   }
   else if( sym == "/"){
 
   displayValue =  divide(a, b)
 
   document.querySelector('#display').innerText =  displayValue 
+
+  console.log("Divide function has been called from operate");
   }
   else if( sym == "*"){
 
   displayValue =  mutliply(a, b)
 
   document.querySelector('#display').innerText =  displayValue 
+
+  console.log("Multiply function has been called from operate");
   }
 
 console.log("The end of the operate function has concluded");
 return console.log(displayValue);
 
 }
+equals.addEventListener("click", operate())
 
-//Const approach
-
-// const equals = document.querySelector('#=')
-
-// const operate = e => {
-// displayValue = 0
-// firstOperand = 0
-// nextOperand = 0
-// lastChar = ''
-// symbol = 0
-// console.log("Clear has been called and display Value is " + displayValue)
-// let clearedVal = displayValue.toString();
-// document.querySelector('#display').innerText = clearedVal
-// }
-// equals.addEventListener("click", clear)
 
 
 
