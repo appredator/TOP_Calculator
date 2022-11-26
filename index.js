@@ -139,6 +139,22 @@ const updateSymbol = e => {
   }
 symbolGroup.addEventListener("click", updateSymbol);
 
+const display = document.querySelector('#ac')
+
+const clear = e => {
+displayValue = 0
+firstOperand = 0
+nextOperand = 0
+lastChar = ''
+symbol = 0
+// console.log("Clear has been called and display Value is " + displayValue)
+let clearedVal = displayValue.toString();
+document.querySelector('#firstDisplay').innerText = 0
+document.querySelector('#secondDisplay').innerText = 0
+document.querySelector('#symbolDisplay').innerText = 0
+}
+display.addEventListener("click", clear)
+
 //Call when equals button is pressed.
 document.querySelector('#equals').addEventListener('click', operate())
 // non const approach
@@ -196,21 +212,7 @@ return console.log(displayValue);
 // }
 // equals.addEventListener("click", clear)
 
-const display = document.querySelector('#ac')
 
-const clear = e => {
-displayValue = 0
-firstOperand = 0
-nextOperand = 0
-lastChar = ''
-symbol = 0
-// console.log("Clear has been called and display Value is " + displayValue)
-let clearedVal = displayValue.toString();
-document.querySelector('#firstDisplay').innerText = 0
-document.querySelector('#secondDisplay').innerText = 0
-document.querySelector('#symbolDisplay').innerText = 0
-}
-display.addEventListener("click", clear)
 
 function add(a, b) {
 	return a + b;
