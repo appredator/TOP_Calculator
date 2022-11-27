@@ -156,46 +156,53 @@ document.querySelector('#display').innerText = 0
 }
 display.addEventListener("click", clear)
 
-//Call when equals button is pressed.
-const equals = document.getElementById("equals")
-// make this do event listener changes display first
-// document.querySelector('#equals').addEventListener('click', operate())
-// non const approach
-const operate = sym => {
+//Calls are below for when equals button is pressed.
+const equalsVar = document.querySelector("#equals") 
+
+const test = e => {
+
+  document.querySelector('#display').innerText =  77777
+}
+
+equalsVar.addEventListener("click", test)
+// // make this do event listener changes display first
+// // document.querySelector('#equals').addEventListener('click', operate())
+// // non const approach
+function operate(symbol, firstOperand, secondOperand){
 console.log("Operate has been called.")
-  sym = symbol
+  // sym = symbol
 
-  a = firstOperand
+  // a = firstOperand
 
-  b = secondOperand
+  // b = secondOperand
 
-  if (sym == "+"){
+  if (symbol === "+"){
 
-  displayValue = add(a,b)
+  displayValue = add(firstOperand,secondOperand)
 
   document.querySelector('#display').innerText =  displayValue 
 
   console.log("Add function has been called from operate");
   }
-  else if(sym == "-"){
+  else if(symbol === "-"){
 
-  displayValue =  subtract(a, b)
+  displayValue =  subtract(firstOperand,secondOperand)
 
   document.querySelector('#display').innerText =  displayValue 
 
   console.log("Subtraction function has been called from operate");
   }
-  else if( sym == "/"){
+  else if(symbol === "/"){
 
-  displayValue =  divide(a, b)
+  displayValue =  divide(firstOperand,secondOperand)
 
   document.querySelector('#display').innerText =  displayValue 
 
   console.log("Divide function has been called from operate");
   }
-  else if( sym == "*"){
+  else if(symbol === "*"){
 
-  displayValue =  mutliply(a, b)
+  displayValue =  mutliply(firstOperand,secondOperand)
 
   document.querySelector('#display').innerText =  displayValue 
 
@@ -203,10 +210,66 @@ console.log("Operate has been called.")
   }
 
 console.log("The end of the operate function has concluded");
-return console.log(displayValue);
+
+document.querySelector('#display').innerText =  10
+
+// return console.log(displayValue);
 
 }
-equals.addEventListener("click", operate())
+
+
+
+// CONST APPROACH FOR EQUALS
+// const equals = document.getElementById("#equals")
+// // make this do event listener changes display first
+// // document.querySelector('#equals').addEventListener('click', operate())
+// // non const approach
+// const operate = sym => {
+// console.log("Operate has been called.")
+//   sym = symbol
+
+//   a = firstOperand
+
+//   b = secondOperand
+
+//   if (sym == "+"){
+
+//   displayValue = add(a,b)
+
+//   document.querySelector('#display').innerText =  displayValue 
+
+//   console.log("Add function has been called from operate");
+//   }
+//   else if(sym == "-"){
+
+//   displayValue =  subtract(a, b)
+
+//   document.querySelector('#display').innerText =  displayValue 
+
+//   console.log("Subtraction function has been called from operate");
+//   }
+//   else if( sym == "/"){
+
+//   displayValue =  divide(a, b)
+
+//   document.querySelector('#display').innerText =  displayValue 
+
+//   console.log("Divide function has been called from operate");
+//   }
+//   else if( sym == "*"){
+
+//   displayValue =  mutliply(a, b)
+
+//   document.querySelector('#display').innerText =  displayValue 
+
+//   console.log("Multiply function has been called from operate");
+//   }
+
+// console.log("The end of the operate function has concluded");
+// return console.log(displayValue);
+
+// }
+// equals.addEventListener("click", operate())
 
 
 
