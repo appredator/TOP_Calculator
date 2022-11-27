@@ -251,20 +251,20 @@ equalsVar.addEventListener("click", operate)
 // }
 
 function add(a, b) {
-	return a + b;
+	return parseInt(a) + parseInt(b);
 };
 
 function subtract(a, b) {
-	return a - b;
+	return parseInt(a) - parseInt(b);
 };
 
 
 function mutliply(a, b) {
-return a * b;
+return parseInt(a) * parseInt(b);
 };
 
 function divide(a, b) {
-	return a / b;
+	return parseInt(a) / parseInt(b);
 };
 
 
