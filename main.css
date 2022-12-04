@@ -6,7 +6,7 @@ body {
   margin: 0;
    height: 100%;
    font-family: "Roboto", Sans-Serif;
-  
+  background-color: #2e86c0;
 } 
 /*  .firstDisplay{
   display: grid;
@@ -29,12 +29,41 @@ body {
   grid-area: secondDisplay;
     display: grid;
  } */
+ .secondDisplay{
+
+  margin-left: 2rem;
+ }
 .operandContainer {
   display: grid;
   width: 100%;
 grid-template-columns: 47.5% 37.5% 35%;
   font-family: "Roboto", sans-serif;
 } 
+.symbolDisplay{
+  display: grid;
+  width: 100%;
+  align-self: center;
+  justify-content: center;
+grid-template-columns: 87%;
+  font-family: "Roboto", sans-serif;
+}
+.firstDisplay{
+
+  margin-left: 4.5rem;
+}
+em{
+  /* display: grid;
+  width: 100%;
+  align-self: center;
+  justify-content: center;
+grid-template-columns: 0%;
+  font-family: "Roboto", sans-serif; */
+  display: grid;
+  align-self: center;
+  justify-content: center;
+  /* grid-template-columns: 0% */
+  font-family: "Roboto", sans-serif;
+}
 .equalsTopContainer {
   display: grid;
   width: 100%;
@@ -71,15 +100,15 @@ button {
   background-color: #fff;
   border-radius: 3px;
   border: 1px solid #c4c4c4;
-  background-color: transparent;
+  background-color: grey;
   font-size: 2rem;
-  color: #333;
+  color: rgb(0, 0, 0);
   background-image: linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,.04));
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);
   text-shadow: 0 1px rgba(255,255,255,.4);
 }
  button:hover {
-  background-color: #eaeaea;
+  background-color: #c2c2c2;
 }
 .operator {
   color: #337cac;
