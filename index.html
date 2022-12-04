@@ -1,65 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="main.css"/>
   <meta charset="UTF-8">
-  <link rel=”stylesheet” href=”/main.css”>
+
   <title>Calculator</title>
 </head>
 <body>
 
   <p><em>Calculator Application</em> 💁</p>
 
-  <input type="text" class="displayValue">
-  <input type="text" class="displayValue">
-  <h4 id="display">
-  Value
-  </h4>
-  <h4 id="firstDisplay">
-    First Operand
-  </h4>
-  <h4 id="secondDisplay">
-    Second Operand
-  </h4>
-  <h4 id="symbolDisplay">
-  Symbol
-  </h4>
-  <div id="button-group">
-  <button class="numbers" id="0">0
-  </button>
-  <button class="numbers" id="1">1
-  </button>
-  <button class="numbers" id="2">2
-  </button>
-  <button class="numbers" id="3">3
-  </button>
-  <button class="numbers" id="4">4
-  </button>
-  <button class="numbers" id="5">5
-  </button>
-  <button class="numbers" id="6">6
-  </button>
-  <button class="numbers" id="7">7
-  </button>
-  <button class="numbers" id="8">8
-  </button>
-  <button class="numbers" id="9">9
-  </button>
-  </div>
-  <div id="symbols-group">
-  <button class="symbols" id="*">*
-  </button>
-  <button class="symbols" id="/">/
-  </button>
-  <button class="symbols" id="+">+
-  </button>
-  <button class="symbols" id="-">-
-  </button>
-  <button class="symbols" id="equals">=
-  </button>
-  <button class="symbols" id="ac">AC
-  </button>
-  </div>
-<script type="text/javascript" src="/index.js">
-</script>
-</body>
-</html>
+  <div class='operandContainer'>
+    <h4 class="firstDisplay" id="firstDisplay">
+      First Operand
+    </h4>
+    
+    <h4 class="symbolDisplay" id="symbolDisplay">
+    Symbol
+    </h4>
+    
+      <h4 class="secondDisplay" id="secondDisplay">
+      Second Operand
+    </h4>
+    </div>
+    <div class="equalsTopContainer">
+     <h4 class="equalsTop" id="equalsTop">
+      =
+    </h4>
+     </div>
+    
+     <h4 class="display" id="display">
+      Display Value of Results
+    </h4>
+
+    <div class="container" id="button-group">
+    <button class="numbers" id="0">0
+    </button>
+    <button class="numbers" id="1">1
+    </button>
+    <button class="numbers" id="2">2
+    </button>
+    <button class="numbers" id="3">3
+    </button>
+    <button class="numbers" id="4">4
+    </button>
+    <button class="numbers" id="5">5
+    </button>
+    <button class="numbers" id="6">6
+    </button>
+    <button class="numbers" id="7">7
+    </button>
+    <button class="numbers" id="8">8
+    </button>
+    <button class="numbers" id="9">9
+    </button>
+    </div>
+    <div class="symbolsContainer"id="symbols-group">
+    <button class="symbols" id="*">*
+    </button>
+    <button class="symbols" id="/">/
+    </button>
+    <button class="symbols" id="+">+
+    </button>
+    <button class="symbols" id="-">-
+    </button>
+    <button class="symbols" id="ac">AC
+    </button>
+    </div>
+    <div class="equalsContainer">
+    <button class="symbols" id="equals">=
+    </button>
+    </div>
+
+  <script type="text/javascript" src="/index.js">
+  </script>
+  </body>
+  </html>
