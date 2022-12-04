@@ -38,8 +38,17 @@ grid-template-columns: 47.5% 37.5% 35%;
 .equalsTopContainer {
   display: grid;
   width: 100%;
+  align-self: center;
   justify-content: center;
-grid-template-columns: 100%;
+grid-template-columns: 0%;
+  font-family: "Roboto", sans-serif;
+} 
+.display {
+  display: grid;
+  width: 100%;
+  align-self: center;
+  justify-content: center;
+grid-template-columns: 0%;
   font-family: "Roboto", sans-serif;
 } 
 .container {
